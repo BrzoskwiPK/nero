@@ -1,4 +1,4 @@
-import icons from './Icons'
-import images from './Images'
+import Icons from './Icons'
+import Images from './Images'
 
-export { icons, images }
+export { Icons, Images }
