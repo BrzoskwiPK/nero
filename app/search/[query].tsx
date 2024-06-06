@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { FC } from 'react'
 
-const Search = () => {
+const Search: FC = () => {
   return (
     <View>
       <Text>Search</Text>

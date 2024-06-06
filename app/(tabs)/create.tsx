@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { FC } from 'react'
 
-const Create = () => {
+const Create: FC = () => {
   return (
     <View>
       <Text>Create</Text>

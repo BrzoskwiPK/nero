@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { FC } from 'react'
 
-const Bookmark = () => {
+const Bookmark: FC = () => {
   return (
     <View>
       <Text>Bookmark</Text>

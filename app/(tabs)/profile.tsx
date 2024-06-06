@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { Text, View } from 'react-native'
+import React, { FC } from 'react'
 
-const Profile = () => {
+const Profile: FC = () => {
   return (
     <View>
       <Text>Profile</Text>
