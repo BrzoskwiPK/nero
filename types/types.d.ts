@@ -3,8 +3,8 @@ import { type Models } from 'react-native-appwrite'
 export interface IGlobalContext {
   isLoggedIn: boolean
   setIsLoggedIn: Dispatch<React.SetStateAction<boolean>>
-  user: Models.User<DefaultPreferences> | undefined
-  setUser: Dispatch<React.SetStateAction<Models.User<DefaultPreferences> | undefined>>
+  user: IUser
+  setUser: Dispatch<React.SetStateAction<IUser>>
   isLoading: boolean
 }
 
@@ -29,3 +29,29 @@ export interface IPost extends Models.Document {
   video: string
   creator: ICreator
 }
+
+export interface IUser extends Models.Document {
+  $collectionId: string
+  $createdAt: string
+  $databaseId: string
+  $id: string
+  $permissions: string[]
+  $updatedAt: string
+  accountId: string
+  avatar: string
+  email: string
+  username: string
+}
+
+export interface FormState {
+  title: string
+  video: ImagePickerAsset | null
+  thumbnail: ImagePickerAsset | null
+  prompt: string
+}
+
+export interface UserId {
+  userId: string
+}
+
+export type FileState = FormState & UserId

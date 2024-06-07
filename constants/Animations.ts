@@ -1,17 +1,23 @@
-export const zoomIn = {
+import { CustomAnimation } from 'react-native-animatable'
+
+export const zoomIn: CustomAnimation = {
   0: {
-    scale: 0.9,
+    scaleX: 0.9,
+    scaleY: 0.9,
   },
   1: {
-    scale: 1.1,
+    scaleX: 1.1,
+    scaleY: 1.1,
   },
 }
 
 export const zoomOut = {
   0: {
-    scale: 1,
+    scaleX: 1,
+    scaleY: 1,
   },
   1: {
-    scale: 0.9,
+    scaleX: 0.9,
+    scaleY: 0.9,
   },
 }

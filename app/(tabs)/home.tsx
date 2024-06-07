@@ -1,8 +1,7 @@
-import { Image, View, Text, FlatList, RefreshControl, Alert } from 'react-native'
+import { View, Text, FlatList, RefreshControl, Alert } from 'react-native'
 import { FC, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { getAllPosts, getLatestPosts } from '@/lib/appwrite'
-import Images from '@/constants/Images'
 import SearchInput from '../components/SearchInput'
 import Trending from '../components/Trending'
 import EmptyState from '../components/EmptyState'
@@ -15,7 +14,7 @@ const Home: FC = () => {
   const [refreshing, setRefreshing] = useState(false)
   const { data: posts, refetchData } = useData(getAllPosts)
   const { data: latestPosts } = useData(getLatestPosts)
-  const { user, setUser, setIsLoggedIn } = useGlobalContext()
+  const { user } = useGlobalContext()
 
   const onRefresh = async () => {
     setRefreshing(true)
@@ -41,13 +40,9 @@ const Home: FC = () => {
         ListHeaderComponent={() => (
           <View className='my-6 px-4 space-y-6'>
             <View className='justify-between items-start flex-row mb-6'>
-              <View className='items-center justify-center flex-row gap-2'>
+              <View className='items-center justify-center flex-row gap-2 w-full'>
                 <Text className='font-pmedium text-sm text-gray-100'>Welcome back,</Text>
-                <Text className='text-2xl font-psemibold text-white'>{user?.username}</Text>
-              </View>
-
-              <View className='mt-1.5'>
-                <Image source={Images.logoSmall} className='w-9 h-10' resizeMode='contain' />
+                <Text className='text-xl font-psemibold text-white'>{user?.username}</Text>
               </View>
             </View>
 
@@ -56,7 +51,7 @@ const Home: FC = () => {
             <View className='w-full flex-1 pt-5 pb-8'>
               <Text className='text-gray-100 text-lg font-pregular mb-3'>Latest Videos</Text>
 
-              <Trending posts={latestPosts ?? []} />
+              <Trending posts={(latestPosts as IPost[]) ?? []} />
             </View>
           </View>
         )}

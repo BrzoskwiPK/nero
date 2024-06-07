@@ -32,11 +32,13 @@ const Search: FC = () => {
         )}
         ListHeaderComponent={() => (
           <View className='my-6 px-4 space-y-6'>
-            <View className='justify-between items-start flex-row mb-6'>
-              <Text className='font-pmedium text-sm text-gray-100'>Search Results</Text>
-              <Text className='text-2xl font-psemibold text-white'>{query}</Text>
+            <View className='justify-between items-start mb-6'>
+              <View className='flex-row'>
+                <Text className='font-pmedium text-sm text-gray-100'>Search Results:</Text>
+                <Text className='text-xl ml-2 font-psemibold text-white -mt-1'>{query}</Text>
+              </View>
 
-              <View className='mt-6 mb-8'>
+              <View className='mt-10 mb-8 flex-1'>
                 <SearchInput initialQuery={query as string} />
               </View>
             </View>

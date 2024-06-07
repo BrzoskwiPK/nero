@@ -1,4 +1,5 @@
-import { IAppwriteError, IPost } from '@/types/types'
+import { FileState, IAppwriteError, IPost } from '@/types/types'
+import { ImagePickerAsset } from 'expo-image-picker'
 import {
   Account,
   Avatars,
@@ -165,13 +166,13 @@ export const getUserPosts = async (userId: string) => {
   }
 }
 
-export const uploadFile = async (file: any, type: string) => {
+export const uploadFile = async (file: ImagePickerAsset, type: string) => {
   if (!file) return
 
   const asset = {
-    name: file.fileName,
-    type: file.mimeType,
-    size: file.fileSize,
+    name: file.fileName as string,
+    type: file.mimeType as string,
+    size: file.fileSize as number,
     uri: file.uri,
   }
 
@@ -207,7 +208,7 @@ export const getFilePreview = async (fileId: string, type: string) => {
   }
 }
 
-export const createVideoPost = async (form: any) => {
+export const createVideoPost = async (form: FileState) => {
   try {
     const [thumbnailUrl, videoUrl] = await Promise.all([
       uploadFile(form.thumbnail, 'image'),

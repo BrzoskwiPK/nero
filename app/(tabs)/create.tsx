@@ -1,23 +1,15 @@
 import { Image, View, Text, Alert, ScrollView, TouchableOpacity } from 'react-native'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { useGlobalContext } from '@/context/GlobalProvider'
-import { router } from 'expo-router'
+import { router, useFocusEffect } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { ResizeMode, Video } from 'expo-av'
-import { IAppwriteError } from '@/types/types'
+import { FormState, IAppwriteError } from '@/types/types'
 import { createVideoPost } from '@/lib/appwrite'
 import FormField from '../components/FormField'
 import Icons from '@/constants/Icons'
 import CustomButton from '../components/CustomButton'
 import * as ImagePicker from 'expo-image-picker'
-import { ImagePickerAsset } from 'expo-image-picker'
-
-interface FormState {
-  title: string
-  video: ImagePickerAsset | null
-  thumbnail: ImagePickerAsset | null
-  prompt: string
-}
 
 const Create = () => {
   const { user } = useGlobalContext()
@@ -28,6 +20,19 @@ const Create = () => {
     thumbnail: null,
     prompt: '',
   })
+
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        setForm({
+          title: '',
+          video: null,
+          thumbnail: null,
+          prompt: '',
+        })
+      }
+    }, [])
+  )
 
   const openPicker = async (selectType: string) => {
     let result = await ImagePicker.launchImageLibraryAsync({
