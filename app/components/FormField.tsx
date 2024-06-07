@@ -1,5 +1,6 @@
 import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native'
-import React, { FC, useState } from 'react'
+import { FC, useState } from 'react'
+import Icons from '@/constants/Icons'
 
 interface FormFieldProps {
   title: string
@@ -10,8 +11,6 @@ interface FormFieldProps {
   secureTextEntry?: boolean
   handleChangeText: (e: string) => void
 }
-
-import Icons from '@/constants/Icons'
 
 const FormField: FC<FormFieldProps> = ({
   title,
@@ -34,6 +33,7 @@ const FormField: FC<FormFieldProps> = ({
           placeholderTextColor='#7b7b8b'
           onChangeText={handleChangeText}
           secureTextEntry={title === 'Password' && !showPassword}
+          keyboardType={title === 'Email' ? 'email-address' : 'default'}
         />
 
         {title === 'Password' && (

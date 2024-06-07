@@ -1,5 +1,5 @@
 import { TouchableOpacity, Text, ActivityIndicator } from 'react-native'
-import React, { FC } from 'react'
+import { FC } from 'react'
 
 interface CustomButtonProps {
   title: string

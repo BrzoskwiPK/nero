@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native'
-import React, { FC } from 'react'
+import { FC } from 'react'
 
 const Bookmark: FC = () => {
   return (
